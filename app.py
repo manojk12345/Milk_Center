@@ -148,7 +148,7 @@ def home_page():
                 else:
                     status = insert_new_farmer(farmer_name, contact_info)
                     if status == 'success':
-                        st.success("Welcome to {farmer_name} Milk Collection center!")
+                        st.success("Welcome to Milk Collection center!")
                         time.sleep(1)
                         st.rerun() 
                     else:
