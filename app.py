@@ -124,15 +124,15 @@ def home_page():
 
     slide = st.radio(
         " ", 
-        ["Register Farmer", "Farmers List", "Milk Collection", 
-            "Milk Collection Data", "Monthly Reports", 
-            "Settle Payments", "Logout"], 
+        ["Register farmer", "Farmers list", "Milk collection", 
+            "Data collected", "Monthly reports", 
+            "Payment settlement", "Logout"], 
         key='slide',horizontal=True
     )
     
-    if slide == "Register Farmer":
+    if slide == "Register farmer":
         with st.form(key='farmer-registration-form',clear_on_submit=True):
-            st.write("#### Farmer Registration Form")
+            st.write("#### Farmer registration form")
             farmer_name = st.text_input("Farmer Name")
             contact_info = st.text_input("Contact Info")
                 
@@ -148,22 +148,23 @@ def home_page():
                 else:
                     status = insert_new_farmer(farmer_name, contact_info)
                     if status == 'success':
-                        st.success("Welcome to Milk Collection center!")
+                        # st.success("Welcome to Milk Collection center!")
+                        st.success(f"Welcome {farmer_name} to Milk Collection center!")
                         time.sleep(1)
                         st.rerun() 
                     else:
                         st.error("Failed to register farmer. Please try again.")
     
-    elif slide == "Farmers List":
-        st.write("#### Farmers List")
+    elif slide == "Farmers list":
+        st.write("#### Farmers list")
         conn = sqlite3.connect('milk_collection_data.db')
         df = pd.read_sql_query("SELECT * FROM FARMER", conn)
         conn.close()
         st.dataframe(df,use_container_width=True, hide_index =True)
 
-    elif slide == "Milk Collection":
+    elif slide == "Milk collection":
         with st.form(key='milk-collection-form',clear_on_submit=True):
-            st.write("#### Enter Milk Collection Data")
+            st.write("#### Enter milk collection data")
             conn = sqlite3.connect('milk_collection_data.db')
             cur = conn.cursor()
             
@@ -226,8 +227,8 @@ def home_page():
                         else:
                             st.error(f"Record already exists for {delivery_type}")
                             
-    elif slide == "Milk Collection Data":
-        st.write("#### Milk collection Data")
+    elif slide == "Data collected":
+        st.write("#### Data collected")
         
         conn = sqlite3.connect('milk_collection_data.db')
         df = pd.read_sql_query("SELECT * FROM MILKCOLLECTION", conn)
@@ -236,8 +237,8 @@ def home_page():
         
         st.dataframe(df,use_container_width=True, hide_index =True)
     
-    elif slide == "Monthly Reports":
-        st.write("#### Monthly Report")
+    elif slide == "Monthly reports":
+        st.write("#### Monthly report")
         
         conn = sqlite3.connect('milk_collection_data.db')
         cur = conn.cursor()
@@ -262,8 +263,8 @@ def home_page():
             st.dataframe(df,use_container_width=True, hide_index =True)
             st.write(f"Total : {round(df['totalAmount'].sum(),2)}")
     
-    elif slide == "Settle Payments":
-        st.write("#### Settle Payments")
+    elif slide == "Payment settlement":
+        st.write("#### Payment settlement")
 
         conn = sqlite3.connect('milk_collection_data.db')
         cur = conn.cursor()
