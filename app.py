@@ -162,7 +162,7 @@ def home_page():
         conn.close()
         st.dataframe(df,use_container_width=True, hide_index =True)
 
-    elif slide == "Milk collection":
+    elif slide == "Milk cllection":
         with st.form(key='milk-collection-form',clear_on_submit=True):
             st.write("#### Enter Milk Collection Data")
             conn = sqlite3.connect('milk_collection_data.db')
