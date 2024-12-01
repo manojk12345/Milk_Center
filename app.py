@@ -162,9 +162,9 @@ def home_page():
         conn.close()
         st.dataframe(df,use_container_width=True, hide_index =True)
 
-    elif slide == "Milk collection":
+    elif slide == "Milk Collection":
         with st.form(key='milk-collection-form',clear_on_submit=True):
-            st.write("#### Enter milk collection data")
+            st.write("#### Enter Milk Collection Data")
             conn = sqlite3.connect('milk_collection_data.db')
             cur = conn.cursor()
             
@@ -226,7 +226,7 @@ def home_page():
                             st.rerun() 
                         else:
                             st.error(f"Record already exists for {delivery_type}")
-                            
+                        
     elif slide == "Data collected":
         st.write("#### Data collected")
         
