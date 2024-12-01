@@ -130,7 +130,7 @@ def home_page():
         key='slide',horizontal=True
     )
     
-    if slide.strip() == "Register farmer":
+    if slide == "Register farmer":
         with st.form(key='farmer-registration-form',clear_on_submit=True):
             st.write("#### Farmer registration form")
             farmer_name = st.text_input("Farmer Name")
@@ -155,14 +155,14 @@ def home_page():
                     else:
                         st.error("Failed to register farmer. Please try again.")
     
-    elif slide.strip() == "Farmers list":
+    elif slide == "Farmers list":
         st.write("#### Farmers list")
         conn = sqlite3.connect('milk_collection_data.db')
         df = pd.read_sql_query("SELECT * FROM FARMER", conn)
         conn.close()
         st.dataframe(df,use_container_width=True, hide_index =True)
 
-    elif slide.strip() == "Milk collection":
+    elif slide == "Milk collection":
         with st.form(key='milk-collection-form',clear_on_submit=True):
             st.write("#### Enter milk collection data")
             conn = sqlite3.connect('milk_collection_data.db')
@@ -227,7 +227,7 @@ def home_page():
                         else:
                             st.error(f"Record already exists for {delivery_type}")
                             
-    elif slide.strip() == "Data collected":
+    elif slide == "Data collected":
         st.write("#### Data collected")
         
         conn = sqlite3.connect('milk_collection_data.db')
@@ -237,7 +237,7 @@ def home_page():
         
         st.dataframe(df,use_container_width=True, hide_index =True)
     
-    elif slide.strip() == "Monthly reports":
+    elif slide == "Monthly reports":
         st.write("#### Monthly report")
         
         conn = sqlite3.connect('milk_collection_data.db')
@@ -263,7 +263,7 @@ def home_page():
             st.dataframe(df,use_container_width=True, hide_index =True)
             st.write(f"Total : {round(df['totalAmount'].sum(),2)}")
     
-    elif slide.strip() == "Payment settlement":
+    elif slide == "Payment settlement":
         st.write("#### Payment settlement")
 
         conn = sqlite3.connect('milk_collection_data.db')
@@ -297,7 +297,7 @@ def home_page():
         df = pd.read_sql_query("SELECT farmerName,totalBalance,setteled,due FROM PAYMENTS", conn)
         st.dataframe(df,use_container_width=True, hide_index =True)
     
-    elif slide.strip() == "Logout":
+    elif slide == "Logout":
         st.session_state.clear()
         st.write("Logged out successfully.")
         st.session_state.logged_in = False
