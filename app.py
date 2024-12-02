@@ -133,8 +133,8 @@ def home_page():
     if slide == "Register farmer":
         with st.form(key='farmer-registration-form',clear_on_submit=True):
             st.write("#### Farmer registration form")
-            farmer_name = st.text_input("Farmer Name")
-            contact_info = st.text_input("Contact Info")
+            farmer_name = st.text_input("Farmer name")
+            contact_info = st.text_input("Contact info")
                 
             if st.form_submit_button("Submit"):
                 conn = sqlite3.connect('milk_collection_data.db')
@@ -172,9 +172,9 @@ def home_page():
 
             conn.close()
             farmer_name = st.selectbox("Select Farmer Name", [str(i[0]) for i in data])
-            quantity = st.number_input("Milk Quantity (in liters)", step=0.1)
-            reading = st.number_input("Fat Reading", step=0.1)
-            price_per_liter = st.number_input("Price per Liter", step=0.1)
+            quantity = st.number_input("Milk quantity (in liters)", step=0.1)
+            reading = st.number_input("Fat reading", step=0.1)
+            price_per_liter = st.number_input("Price/liter", step=0.1)
             
             
             if st.form_submit_button("Submit"):
