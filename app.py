@@ -171,7 +171,7 @@ def home_page():
             data = cur.execute(''' SELECT distinct farmerName FROM FARMER ''').fetchall()
 
             conn.close()
-            farmer_name = st.selectbox("Select Farmer name", [str(i[0]) for i in data])
+            farmer_name = st.selectbox("Select farmer name", [str(i[0]) for i in data])
             quantity = st.number_input("Milk quantity (in liters)", step=0.1)
             reading = st.number_input("Fat reading", step=0.1)
             price_per_liter = st.number_input("Price/liter", step=0.1)
@@ -251,9 +251,9 @@ def home_page():
         year_options = [str(y) for y in range(2020, current_year + 1)]
         month_options = [str(m).zfill(2) for m in range(1, 13)]
         
-        year = st.selectbox("Select Year", year_options, index=year_options.index(str(current_year)))
-        month = st.selectbox("Select Month", month_options, index=month_options.index(str(current_month).zfill(2)))
-        farmer_name = st.selectbox("Select Farmer Name", [str(i[0]) for i in data])
+        year = st.selectbox("Select year", year_options, index=year_options.index(str(current_year)))
+        month = st.selectbox("Select month", month_options, index=month_options.index(str(current_month).zfill(2)))
+        farmer_name = st.selectbox("Select farmer name", [str(i[0]) for i in data])
 
         df = fetch_monthly_report(year, month, farmer_name)
 
