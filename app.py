@@ -124,9 +124,9 @@ def home_page():
 
     slide = st.radio(
         " ", 
-        ["Register farmer", "Farmers list", "Milk collection                       ", 
+        ["Register farmer", "Farmers list", "Milk collection", 
             "Data collected", "Monthly reports", 
-            "Payment settlement                                                     ", "Logout"], 
+            "Payment settlement", "Logout"], 
         key='slide',horizontal=True
     )
     
