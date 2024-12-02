@@ -124,7 +124,7 @@ def home_page():
 
     slide = st.radio(
         " ", 
-        ["Register farmer", "Farmers list", "Milk collection", 
+        ["Register farmer", "Farmers List", "Milk collection", 
             "Data collected", "Monthly reports", 
             "Payment settlement", "Logout"], 
         key='slide',horizontal=True
@@ -155,7 +155,7 @@ def home_page():
                     else:
                         st.error("Failed to register farmer. Please try again.")
     
-    elif slide == "Farmers list":
+    elif slide == "Farmers List":
         st.write("#### Farmers list")
         conn = sqlite3.connect('milk_collection_data.db')
         df = pd.read_sql_query("SELECT * FROM FARMER", conn)
