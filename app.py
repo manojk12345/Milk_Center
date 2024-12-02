@@ -160,7 +160,7 @@ def home_page():
         conn = sqlite3.connect('milk_collection_data.db')
         df = pd.read_sql_query("SELECT * FROM FARMER", conn)
         conn.close()
-        st.dataframe(df,use_container_width=True, hide_index =True)
+        st.dataframe(df,use_container_width=False, hide_index =True)
 
     elif slide == "Milk collection":
         with st.form(key='milk-collection-form',clear_on_submit=True):
