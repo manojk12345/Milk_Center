@@ -124,7 +124,7 @@ def home_page():
 
     slide = st.radio(
         " ", 
-        ["Register farmer", "Farmers List", "Milk collection", 
+        ["Register farmer", "Farmers list", "Milk collection", 
             "Data collected", "Monthly reports", 
             "Payment settlement", "Logout"], 
         key='slide',horizontal=True
@@ -155,7 +155,7 @@ def home_page():
                     else:
                         st.error("Failed to register farmer. Please try again.")
     
-    elif slide == "Farmers List":
+    elif slide == "Farmers list":
         st.write("#### Farmers list")
         conn = sqlite3.connect('milk_collection_data.db')
         df = pd.read_sql_query("SELECT * FROM FARMER", conn)
@@ -164,14 +164,14 @@ def home_page():
 
     elif slide == "Milk collection":
         with st.form(key='milk-collection-form',clear_on_submit=True):
-            st.write("#### Enter Milk Collection Data")
+            st.write("#### Enter Milk collection data")
             conn = sqlite3.connect('milk_collection_data.db')
             cur = conn.cursor()
             
             data = cur.execute(''' SELECT distinct farmerName FROM FARMER ''').fetchall()
 
             conn.close()
-            farmer_name = st.selectbox("Select Farmer Name", [str(i[0]) for i in data])
+            farmer_name = st.selectbox("Select Farmer name", [str(i[0]) for i in data])
             quantity = st.number_input("Milk quantity (in liters)", step=0.1)
             reading = st.number_input("Fat reading", step=0.1)
             price_per_liter = st.number_input("Price/liter", step=0.1)
@@ -271,8 +271,8 @@ def home_page():
         data = cur.execute("SELECT distinct farmerName FROM FARMER").fetchall()
         conn.close()
         
-        farmer_name = st.selectbox("Select Farmer Name", [str(i[0]) for i in data])
-        pay_amount = st.number_input("Enter Payment Amount:", step=0.01, min_value=0.01)
+        farmer_name = st.selectbox("Select farmer name", [str(i[0]) for i in data])
+        pay_amount = st.number_input("Enter payment amount:", step=0.01, min_value=0.01)
 
         if farmer_name:
             due_amount = fetch_due_amount(farmer_name)
