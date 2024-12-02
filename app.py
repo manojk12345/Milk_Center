@@ -341,7 +341,7 @@ def main():
         
         elif page == 'Registration':
             with st.form(key='registration-form',clear_on_submit=True):
-                user_name = st.text_input('User Name')
+                user_name = st.text_input('User name')
                 password = st.text_input('Password', type='password')
                 
                 if st.form_submit_button("Register"):
